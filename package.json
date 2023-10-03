@@ -1,0 +1,17 @@
+{
+  "name": "mastodon-timeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts": "npx tsc --watch",
+    "sass": "sass --no-source-map --watch src/assets/scss/:"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.68.0",
+    "typescript": "^5.2.2"
+  }
+}
