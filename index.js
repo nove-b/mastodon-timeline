@@ -18,13 +18,13 @@ const getMastodonFeedToJson = async () => {
 const createCardHtml = (res) => {
     const { pubDate, content, enclosure } = res;
     return `
-  <div class="card">
-    <div class="c-top">
-      <div class="date">${fmtDate(pubDate)}</div>
+  <div class="mastodon-timeline-card">
+    <div class="mastodon-timeline-top">
+      <div class="mastodon-timeline-date">${fmtDate(pubDate)}</div>
     </div>
-    <div class="c-middle">
-      <div class="content">${content}</div>
-      ${Object.keys(enclosure).length ? ` <div class="thumbnail"><img src="${enclosure.link}" alt=""></div>` : ''}
+    <div class="mastodon-timeline-middle">
+      <div class="mastodon-timeline-content">${content}</div>
+      ${Object.keys(enclosure).length ? ` <div class="mastodon-timeline-thumbnail"><img src="${enclosure.link}" alt=""></div>` : ''}
     </div>
   </div>
   `;
@@ -50,6 +50,6 @@ const fmtDate = (time) => {
     response.forEach((res) => {
         resultHtml += createCardHtml(res);
     });
-    resultHtml += `<p class="request"><a href="${feedUrl.replace(".rss", "")}" target="_blank">エンジニアの友達が欲しいのでフォローしてください🖐</p>`;
+    resultHtml += `<p class="mastodon-timeline-request"><a href="${feedUrl.replace(".rss", "")}" target="_blank">エンジニアの友達が欲しいので<br>フォローしてください🖐</p>`;
     timeline.innerHTML = resultHtml;
 })();
