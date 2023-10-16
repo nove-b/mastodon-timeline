@@ -3,10 +3,11 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 #MastodonTimeline .card {
-  margin-top: 16px;
+  margin-top: 12px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #f3f3f3;
   padding: 16px;
+  font-size: 12px;
 }
 #MastodonTimeline .card .c-top {
   display: flex;
@@ -28,4 +29,8 @@
 #MastodonTimeline .card .c-middle .thumbnail img {
   border-radius: 8px;
   width: 100%;
+}
+#MastodonTimeline .request {
+  text-align: center;
+  font-size: 12px;
 }

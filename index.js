@@ -1,9 +1,9 @@
+const endpoint = "https://api.rss2json.com/v1/api.json";
+const feedUrl = "https://mstdn.jp/@nove_b.rss";
 const getMastodonFeedToJson = async () => {
     // https://rss2json.com/docs
-    const endpoint = "https://api.rss2json.com/v1/api.json";
-    const feed_url = "https://hachyderm.io/@nove.rss";
     try {
-        const res = await fetch(`${endpoint}?rss_url=${feed_url}`);
+        const res = await fetch(`${endpoint}?rss_url=${feedUrl}`);
         if (!res.ok) {
             throw new Error(`Network response was not ok (${res.status})`);
         }
@@ -38,6 +38,8 @@ const fmtDate = (time) => {
 };
 (async () => {
     const timeline = document.getElementById('MastodonTimeline');
+    if (!timeline)
+        return;
     timeline.innerHTML = '<p>waiting...</p>';
     const response = await getMastodonFeedToJson();
     // 取得に失敗した時
@@ -48,5 +50,6 @@ const fmtDate = (time) => {
     response.forEach((res) => {
         resultHtml += createCardHtml(res);
     });
+    resultHtml += `<p class="request"><a href="${feedUrl.replace(".rss", "")}" target="_blank">エンジニアの友達が欲しいのでフォローしてください🖐</p>`;
     timeline.innerHTML = resultHtml;
 })();
