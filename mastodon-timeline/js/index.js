@@ -1,7 +1,6 @@
-const endpoint = "https://api.rss2json.com/v1/api.json";
-const feedUrl = "https://mstdn.jp/@nove_b.rss";
-const getMastodonFeedToJson = async () => {
+const getMastodonFeedToJson = async (feedUrl) => {
     // https://rss2json.com/docs
+    const endpoint = "https://api.rss2json.com/v1/api.json";
     try {
         const res = await fetch(`${endpoint}?rss_url=${feedUrl}`);
         if (!res.ok) {
@@ -38,10 +37,14 @@ const fmtDate = (time) => {
 };
 (async () => {
     const timeline = document.getElementById('MastodonTimeline');
+    const server = timeline.dataset.server;
+    const username = timeline.dataset.username;
+    const message = timeline.dataset.message;
+    const feedUrl = `${server}@${username}.rss`;
     if (!timeline)
         return;
-    timeline.innerHTML = '<p>waiting...</p>';
-    const response = await getMastodonFeedToJson();
+    timeline.innerHTML = '<p>waiting...🐘</p>';
+    const response = await getMastodonFeedToJson(feedUrl);
     // 取得に失敗した時
     if (!response) {
         timeline.innerHTML = '<p>データの取得に失敗しました😭</p>';
@@ -50,6 +53,6 @@ const fmtDate = (time) => {
     response.forEach((res) => {
         resultHtml += createCardHtml(res);
     });
-    resultHtml += `<p class="mastodon-timeline-request"><a href="${feedUrl.replace(".rss", "")}" target="_blank">エンジニアの友達が欲しいので<br>フォローしてください🖐</p>`;
+    resultHtml += `<p class="mastodon-timeline-request"><a href="${feedUrl.replace(".rss", "")}" target="_blank">${message}</p>`;
     timeline.innerHTML = resultHtml;
 })();
