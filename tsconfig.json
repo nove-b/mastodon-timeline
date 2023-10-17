@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "amd",
-    "outFile": "index.js"
+    "outFile": "mastodon-timeline/js/index.js"
   },
   "include": [
     "src/assets/ts/*.ts",

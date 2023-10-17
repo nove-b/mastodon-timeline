@@ -6,12 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts": "npx tsc --watch",
-    "sass": "sass --no-source-map --watch src/assets/scss/:"
+    "sass": "sass --no-source-map --watch src/assets/scss/:mastodon-timeline/css/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.68.0",
     "typescript": "^5.2.2"
+  },
+  "volta": {
+    "node": "18.18.2",
+    "npm": "10.2.0"
   }
 }
